@@ -63,8 +63,8 @@ window.ChatbotUI = {
     const footerText = document.createTextNode("Powered by ");
     const footerLink = document.createElement("a");
     footerLink.className = "ncw-footer-link";
-    footerLink.href = "#";
-    footerLink.textContent = config.companyName || "NovaCloud";
+    footerLink.href = "https://github.com/abhishekkumar-code30";
+    footerLink.textContent = config.companyName || "AbhishekKumar";
 
     footer.append(footerText, footerLink);
 

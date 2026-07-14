@@ -13,8 +13,8 @@ function init() {
   currentTree = window.ChatbotTree;
 
   const elements = window.ChatbotUI.buildDOM({ 
-    botName: "Brain Agent",
-    companyName: "NovaCloud"
+    botName: "ChatBot",
+    companyName: "AbhishekKumar"
   });
 
   launcherBtn = elements.launcherBtn;
