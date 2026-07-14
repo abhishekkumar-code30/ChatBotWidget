@@ -1,84 +1,95 @@
 :root {
-  --ncw-primary-color: #ff4343;
-  --ncw-secondary-color: #393939;
-  --widget-bg-color: #686868;
-  --widget-header-color: #464646;
-  --txt-color: #fff703;
+  --ncw-primary: #11c7d2;
+  --ncw-primary-hover: #159ea6;
+  --ncw-primary-glow: rgba(17, 199, 210, 0.25);
+  --ncw-bg: #18252c;
+  --ncw-surface: #25363f;
+  --ncw-surface-hover: #2b3e49;
+  --ncw-border: rgba(255, 255, 255, 0.08);
+  --ncw-text: #f8fafc;
+  --ncw-text-muted: #94a3b8;
+  --ncw-green: #10b981;
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* ===========================
-   Launcher Button
+   Widget Wrapper & Launcher
 =========================== */
 
-.ncw-launcher {
+.ncw-widget {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 64px;
-  height: 64px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  border-radius: 50%;
-  background: var(--ncw-secondary-color);
-  color: var(--ncw-primary-color);
-  cursor: pointer;
+  bottom: 24px;
+  right: 24px;
   z-index: 999999;
-  font-size: 28px;
-  box-shadow: 0 12px 30px rgba(160, 20, 20, 0.35);
-  transition:
-    transform 0.25s ease,
-    background 0.25s ease,
-    box-shadow 0.25s ease;
+}
+
+.ncw-launcher {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--ncw-primary), #0284c7);
+  /* Cyan to Sky Blue */
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(17, 199, 210, 0.35);
+  /* Cyan Glow shadow */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  outline: none;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
 }
 
 .ncw-launcher:hover {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 18px 40px rgba(239, 68, 68, 0.45);
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 14px 35px rgba(17, 199, 210, 0.45);
 }
 
 .ncw-launcher:active {
-  transform: scale(0.96);
+  transform: scale(0.95);
 }
 
 .ncw-launcher i {
   pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 /* ===========================
-   Chat Window
+   Chat Window Layout
 =========================== */
 
 .ncw-window {
   position: fixed;
   bottom: 96px;
-  right: 20px;
-  width: 380px;
-  height: 580px;
+  right: 24px;
+  width: 375px;
+  height: 590px;
+  max-height: 82vh;
   display: flex;
   flex-direction: column;
-  background: var(--widget-bg-color);
-  border: 1px solid #353535;
-  border-radius: 18px;
+  background: var(--ncw-bg);
+  border: 1px solid var(--ncw-border);
+  border-radius: 24px;
   overflow: hidden;
   box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.5),
-    0 0 20px rgba(239, 68, 68, 0.12);
-  z-index: 999998;
+    0 24px 70px rgba(0, 0, 0, 0.55),
+    0 0 40px rgba(17, 199, 210, 0.05);
   opacity: 0;
-  transform: scale(0.85) translateY(20px);
+  transform: scale(0.9) translateY(24px);
   pointer-events: none;
+  transform-origin: bottom right;
   transition:
-    opacity 0.3s ease,
-    transform 0.3s ease;
+    opacity 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .ncw-window.ncw-open {
@@ -88,58 +99,94 @@
 }
 
 /* ===========================
-   Header
+   Header Styling
 =========================== */
 
 .ncw-header {
   padding: 18px 20px;
-  background: var(--widget-header-color);
-  border-bottom: 1px solid rgba(255, 255, 255, .08);
+  background: var(--ncw-surface);
+  border-bottom: 1px solid var(--ncw-border);
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: space-between;
+}
+
+.ncw-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ncw-avatar-container {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(17, 199, 210, 0.15);
+  color: var(--ncw-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.ncw-status-dot {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--ncw-green);
+  border: 2px solid var(--ncw-surface);
+}
+
+.ncw-header-info {
+  display: flex;
+  flex-direction: column;
 }
 
 .ncw-header-title {
-  padding: 8px 18px;
-  border: 2px solid var(--ncw-primary-color);
-  border-radius: 40%;
-  color: var(--txt-color);
-  font-size: 5vh;
+  color: var(--ncw-text);
+  font-size: 15px;
   font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.ncw-header-subtitle {
+  color: var(--ncw-text-muted);
+  font-size: 11px;
+  margin-top: 1px;
+}
+
+.ncw-header-close {
+  background: transparent;
+  border: none;
+  color: var(--ncw-text-muted);
+  cursor: pointer;
+  font-size: 16px;
+  padding: 4px;
+  transition: color 0.2s ease;
+  outline: none;
+}
+
+.ncw-header-close:hover {
+  color: var(--ncw-text);
 }
 
 /* ===========================
-   Body
+   Chat Message Area
 =========================== */
 
 .ncw-body {
   flex: 1;
   padding: 20px;
-  background: var(--widget-bg-color);
-  color: var(--txt-color);
+  background: var(--ncw-bg);
   overflow-y: auto;
-}
-
-/* ===========================
-   Scrollbar
-=========================== */
-
-.ncw-body::-webkit-scrollbar {
-  width: 8px;
-}
-
-.ncw-body::-webkit-scrollbar-track {
-  background: #252525;
-}
-
-.ncw-body::-webkit-scrollbar-thumb {
-  background: #444;
-  border-radius: 999px;
-}
-
-.ncw-body::-webkit-scrollbar-thumb:hover {
-  background: #666;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  scroll-behavior: smooth;
 }
 
 /* ===========================
@@ -148,13 +195,21 @@
 
 .ncw-msg {
   display: flex;
-  margin-bottom: 12px;
-  animation: ncw-slide-in 0.25s ease both;
+  align-items: flex-end;
+  gap: 10px;
+  animation: ncw-slide-in 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 
 @keyframes ncw-slide-in {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .ncw-msg-bot {
@@ -165,51 +220,203 @@
   justify-content: flex-end;
 }
 
+.ncw-msg-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--ncw-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  flex-shrink: 0;
+  border: 1px solid var(--ncw-border);
+}
+
 .ncw-msg-bubble {
-  padding: 10px 14px;
-  font-size: 14px;
-  max-width: 80%;
-  line-height: 1.4;
-  white-space: pre-line;
+  padding: 12px 16px;
+  font-size: 13.5px;
+  max-width: 78%;
+  line-height: 1.5;
+  word-break: break-word;
 }
 
 .ncw-msg-bot .ncw-msg-bubble {
-  background: var(--widget-header-color);
-  color: var(--txt-color);
-  border-radius: 2px 14px 14px 14px;
+  background: var(--ncw-surface);
+  color: var(--ncw-text);
+  border-radius: 16px 16px 16px 4px;
+  border: 1px solid var(--ncw-border);
 }
 
 .ncw-msg-user .ncw-msg-bubble {
-  background: var(--ncw-primary-color);
+  background: linear-gradient(135deg, var(--ncw-primary), #0284c7);
   color: #ffffff;
-  border-radius: 14px 14px 2px 14px;
+  border-radius: 16px 16px 4px 16px;
+  box-shadow: 0 4px 15px rgba(17, 199, 210, 0.2);
 }
 
 /* ===========================
-   Quick Reply Options
+   Quick Reply Buttons
 =========================== */
 
 .ncw-quick-replies {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 8px;
-  margin-bottom: 16px;
+  margin-top: 4px;
+  padding-left: 38px;
+  animation: ncw-slide-in 0.3s ease both;
 }
 
 .ncw-quick-btn {
-  padding: 6px 14px;
-  background: transparent;
-  border: 1.5px solid var(--ncw-primary-color);
-  border-radius: 16px;
-  color: var(--ncw-primary-color);
-  font-size: 13px;
+  padding: 8px 16px;
+  background: rgba(17, 199, 210, 0.06);
+  border: 1px solid rgba(17, 199, 210, 0.22);
+  border-radius: 20px;
+  color: var(--ncw-primary);
+  font-size: 12.5px;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
+  outline: none;
 }
 
 .ncw-quick-btn:hover {
-  background: var(--ncw-primary-color);
-  color: white;
+  background: var(--ncw-primary);
+  color: #ffffff;
+  border-color: var(--ncw-primary);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(17, 199, 210, 0.25);
+}
+
+.ncw-quick-btn:active {
+  transform: scale(0.97);
+}
+
+/* ===========================
+   Back Button
+=========================== */
+
+.ncw-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  margin-top: -6px;
+  margin-left: 38px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--ncw-border);
+  border-radius: 12px;
+  color: var(--ncw-text-muted);
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+  align-self: flex-start;
+  transition: all 0.2s ease;
+}
+
+.ncw-back-btn:hover {
+  color: var(--ncw-text);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ===========================
+   Typing Indicator
+=========================== */
+
+.ncw-typing {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.ncw-typing-bubble {
+  background: var(--ncw-surface);
+  border: 1px solid var(--ncw-border);
+  border-radius: 16px 16px 16px 4px;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ncw-typing-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--ncw-text-muted);
+  border-radius: 50%;
+  animation: ncw-bounce 1.4s ease-in-out infinite;
+}
+
+.ncw-typing-dot:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.ncw-typing-dot:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes ncw-bounce {
+
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+  }
+
+  30% {
+    transform: translateY(-5px);
+  }
+}
+
+/* ===========================
+   Footer / Powered By
+=========================== */
+
+.ncw-footer {
+  padding: 12px;
+  background: var(--ncw-surface);
+  border-top: 1px solid var(--ncw-border);
+  text-align: center;
+  font-size: 10px;
+  color: var(--ncw-text-muted);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  letter-spacing: 0.02em;
+}
+
+.ncw-footer-link {
+  color: var(--ncw-primary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: opacity 0.2s ease;
+}
+
+.ncw-footer-link:hover {
+  opacity: 0.8;
+}
+
+/* ===========================
+   Scrollbar styling
+=========================== */
+
+.ncw-body::-webkit-scrollbar {
+  width: 4px;
+}
+
+.ncw-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.ncw-body::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.ncw-body::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
 }
