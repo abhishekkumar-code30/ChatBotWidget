@@ -141,3 +141,75 @@
 .ncw-body::-webkit-scrollbar-thumb:hover {
   background: #666;
 }
+
+/* ===========================
+   Chat Message Bubbles
+=========================== */
+
+.ncw-msg {
+  display: flex;
+  margin-bottom: 12px;
+  animation: ncw-slide-in 0.25s ease both;
+}
+
+@keyframes ncw-slide-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.ncw-msg-bot {
+  justify-content: flex-start;
+}
+
+.ncw-msg-user {
+  justify-content: flex-end;
+}
+
+.ncw-msg-bubble {
+  padding: 10px 14px;
+  font-size: 14px;
+  max-width: 80%;
+  line-height: 1.4;
+  white-space: pre-line;
+}
+
+.ncw-msg-bot .ncw-msg-bubble {
+  background: var(--widget-header-color);
+  color: var(--txt-color);
+  border-radius: 2px 14px 14px 14px;
+}
+
+.ncw-msg-user .ncw-msg-bubble {
+  background: var(--ncw-primary-color);
+  color: #ffffff;
+  border-radius: 14px 14px 2px 14px;
+}
+
+/* ===========================
+   Quick Reply Options
+=========================== */
+
+.ncw-quick-replies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
+
+.ncw-quick-btn {
+  padding: 6px 14px;
+  background: transparent;
+  border: 1.5px solid var(--ncw-primary-color);
+  border-radius: 16px;
+  color: var(--ncw-primary-color);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ncw-quick-btn:hover {
+  background: var(--ncw-primary-color);
+  color: white;
+}
