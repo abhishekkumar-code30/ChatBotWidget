@@ -1,21 +1,146 @@
 window.ChatbotTree = {
+ 
   start: {
-    text: "Welcome to the Brain assistant! 🧠 How can I help you today?",
+    text: "👋 Welcome! I'm your virtual assistant.\n\nChoose one of the options below and I'll help you find what you're looking for.",
     options: [
-      { label: "Tell me a joke", next: "joke" },
-      { label: "System Status", next: "status" }
+      { label: "🚀 Features",    next: "features" },
+      { label: "🏢 Departments", next: "departments" },
+      { label: "❓ FAQ",          next: "faq" },
+      { label: "📞 Contact",      next: "contact" }
     ]
   },
-  joke: {
-    text: "Why did the computer go to the doctor? \n\nBecause it had a virus! 💻",
+ 
+  // FEATURES
+  features: {
+    text: "Here's what we offer. Want details on any of these?",
     options: [
-      { label: "Haha, start over", next: "start" }
+      { label: "⚡ Fast Setup",    next: "feat_setup" },
+      { label: "🔒 Security",      next: "feat_security" },
+      { label: "🎨 Customization", next: "feat_custom" },
+      { label: "⬅️ Back",          next: "back" }
     ]
   },
-  status: {
-    text: "All neural networks are operational. Uptime: 99.99% ✅",
+  feat_setup: {
+    text: "Get up and running in minutes — no complex config, just plug in your API keys and go.",
     options: [
-      { label: "Back to main menu", next: "start" }
+      { label: "⬅️ Back to Features", next: "features" },
+      { label: "🏠 Main Menu",        next: "restart" }
+    ]
+  },
+  feat_security: {
+    text: "All data is encrypted in transit and at rest. We follow industry-standard practices for access control.",
+    options: [
+      { label: "⬅️ Back to Features", next: "features" },
+      { label: "🏠 Main Menu",        next: "restart" }
+    ]
+  },
+  feat_custom: {
+    text: "Themes, colors, and conversation flows are fully editable — this whole bot is just a JS object you can reshape.",
+    options: [
+      { label: "⬅️ Back to Features", next: "features" },
+      { label: "🏠 Main Menu",        next: "restart" }
+    ]
+  },
+ 
+  // DEPARTMENTS
+  departments: {
+    text: "Which department are you looking for?",
+    options: [
+      { label: "💻 Technical Support", next: "dept_tech" },
+      { label: "💰 Sales",             next: "dept_sales" },
+      { label: "🧑‍💼 HR",               next: "dept_hr" },
+      { label: "⬅️ Back",              next: "back" }
+    ]
+  },
+  dept_tech: {
+    text: "Technical Support handles bugs, integrations, and setup issues.",
+    options: [
+      { label: "📧 support@company.com", next: "mailto:support@company.com", link: true },
+      { label: "⬅️ Back to Departments", next: "departments" },
+      { label: "🏠 Main Menu",           next: "restart" }
+    ]
+  },
+  dept_sales: {
+    text: "Sales handles pricing, plans, and custom quotes.",
+    options: [
+      { label: "📧 sales@company.com", next: "mailto:sales@company.com", link: true },
+      { label: "⬅️ Back to Departments", next: "departments" },
+      { label: "🏠 Main Menu",           next: "restart" }
+    ]
+  },
+  dept_hr: {
+    text: "HR handles hiring, internships, and general people questions.",
+    options: [
+      { label: "📧 hr@company.com", next: "mailto:hr@company.com", link: true },
+      { label: "⬅️ Back to Departments", next: "departments" },
+      { label: "🏠 Main Menu",           next: "restart" }
+    ]
+  },
+ 
+  // FAQ
+  faq: {
+    text: "Common questions — pick one:",
+    options: [
+      { label: "💳 Pricing",      next: "faq_pricing" },
+      { label: "🔄 Refunds",      next: "faq_refunds" },
+      { label: "🌍 Availability", next: "faq_availability" },
+      { label: "⬅️ Back",         next: "back" }
+    ]
+  },
+  faq_pricing: {
+    text: "Pricing depends on your plan and usage — check the Pricing page or ask Sales for a custom quote.",
+    options: [
+      { label: "⬅️ Back to FAQ", next: "faq" },
+      { label: "🏠 Main Menu",   next: "restart" }
+    ]
+  },
+  faq_refunds: {
+    text: "Refunds are handled case-by-case within 14 days of purchase. Contact support with your order ID.",
+    options: [
+      { label: "⬅️ Back to FAQ", next: "faq" },
+      { label: "🏠 Main Menu",   next: "restart" }
+    ]
+  },
+  faq_availability: {
+    text: "We're available online 24/7. Human support responds within 1 business day.",
+    options: [
+      { label: "⬅️ Back to FAQ", next: "faq" },
+      { label: "🏠 Main Menu",   next: "restart" }
+    ]
+  },
+ 
+  // CONTACT
+  contact: {
+    text: "How would you like to reach us?",
+    options: [
+      { label: "📧 Email",   next: "contact_email" },
+      { label: "☎️ Phone",   next: "contact_phone" },
+      { label: "🌐 Socials", next: "contact_socials" },
+      { label: "⬅️ Back",    next: "back" }
+    ]
+  },
+  contact_email: {
+    text: "We usually reply within 24 hours.",
+    options: [
+      { label: "📧 hello@company.com", next: "mailto:hello@company.com", link: true },
+      { label: "⬅️ Back to Contact",   next: "contact" },
+      { label: "🏠 Main Menu",         next: "restart" }
+    ]
+  },
+  contact_phone: {
+    text: "Mon–Fri, 10am–6pm IST.",
+    options: [
+      { label: "☎️ +91-1234567890", next: "tel:+911234567890", link: true },
+      { label: "⬅️ Back to Contact", next: "contact" },
+      { label: "🏠 Main Menu",       next: "restart" }
+    ]
+  },
+  contact_socials: {
+    text: "Find us on GitHub, LinkedIn, and Twitter — links are in the footer.",
+    options: [
+      { label: "⬅️ Back to Contact", next: "contact" },
+      { label: "🏠 Main Menu",       next: "restart" }
     ]
   }
+ 
 };

@@ -72,39 +72,22 @@ function showBotResponse(nodeKey) {
     const botBubble = window.ChatbotUI.createMessageBubble("bot", node.text);
     bodyEl.appendChild(botBubble);
 
-    if (history.length > 0 && nodeKey !== "start") {
-      const backBtn = document.createElement("button");
-      backBtn.className = "ncw-back-btn";
-
-      const icon = document.createElement("i");
-      icon.className = "fa-solid fa-arrow-left";
-
-      const btnText = document.createTextNode(" Back");
-      
-      backBtn.append(icon, btnText);
-      backBtn.addEventListener("click", () => goBack());
-      bodyEl.appendChild(backBtn);
-    }
-
     if (node.options && node.options.length > 0) {
       const optionsRow = window.ChatbotUI.createQuickReplies(node.options, (selectedOpt, container) => {
-
         container.remove();
-        const existingBackBtn = bodyEl.querySelector(".ncw-back-btn");
-        if (existingBackBtn) {
-          existingBackBtn.remove();
-        }
-
+        
         const userBubble = window.ChatbotUI.createMessageBubble("user", selectedOpt.label);
         bodyEl.appendChild(userBubble);
 
-        if (selectedOpt.next === "start") {
+        if (selectedOpt.next === "back") {
+          goBack();
+        } else if (selectedOpt.next === "restart" || selectedOpt.next === "start") {
           history = [];
+          showBotResponse("start");
         } else {
           history.push(currentNodeKey);
+          showBotResponse(selectedOpt.next);
         }
-
-        showBotResponse(selectedOpt.next);
       });
       
       bodyEl.appendChild(optionsRow);
@@ -115,20 +98,10 @@ function showBotResponse(nodeKey) {
 }
 
 function goBack() {
-  if (history.length === 0) return;
-
-  const existingBackBtn = bodyEl.querySelector(".ncw-back-btn");
-  if (existingBackBtn) {
-    existingBackBtn.remove();
+  if (history.length === 0) {
+    showBotResponse("start");
+    return;
   }
-
-  const existingOptions = bodyEl.querySelector(".ncw-quick-replies");
-  if (existingOptions) {
-    existingOptions.remove();
-  }
-
-  const userBubble = window.ChatbotUI.createMessageBubble("user", "← Go Back");
-  bodyEl.appendChild(userBubble);
 
   const prevKey = history.pop();
   showBotResponse(prevKey);
