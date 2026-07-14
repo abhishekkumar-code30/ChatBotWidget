@@ -1,6 +1,7 @@
 let launcherBtn = null;
 let chatWindow = null;
 let closeHeaderBtn = null;
+let clearChatBtn = null;
 let bodyEl = null; 
 let isOpen = false;
 let currentTree = null;
@@ -20,11 +21,14 @@ function init() {
   launcherBtn = elements.launcherBtn;
   chatWindow = elements.chatWindow;
   closeHeaderBtn = elements.closeHeaderBtn;
+  clearChatBtn = elements.clearChatBtn;
   bodyEl = elements.body;
 
   launcherBtn.addEventListener("click", toggleWidget);
 
   closeHeaderBtn.addEventListener("click", closeWidget);
+
+  clearChatBtn.addEventListener("click", clearChat);
 }
 
 function toggleWidget() {
@@ -44,6 +48,14 @@ function toggleWidget() {
 function closeWidget() {
   isOpen = false;
   chatWindow.classList.remove("ncw-open");
+}
+
+function clearChat() {
+  bodyEl.textContent = "";
+
+  history = [];
+
+  showBotResponse("start");
 }
 
 function showTyping() {

@@ -44,6 +44,16 @@ window.ChatbotUI = {
     headerInfo.append(title, subtitle);
     headerLeft.append(avatarContainer, headerInfo);
 
+    const headerActions = document.createElement("div");
+    headerActions.className = "ncw-header-actions";
+
+    const clearChatBtn = document.createElement("button");
+    clearChatBtn.className = "ncw-header-clear";
+    clearChatBtn.setAttribute("aria-label", "Clear Conversation");
+    const trashIcon = document.createElement("i");
+    trashIcon.className = "fa-solid fa-trash-can";
+    clearChatBtn.appendChild(trashIcon);
+
     const closeHeaderBtn = document.createElement("button");
     closeHeaderBtn.className = "ncw-header-close";
     closeHeaderBtn.setAttribute("aria-label", "Minimize window");
@@ -52,7 +62,8 @@ window.ChatbotUI = {
     closeIcon.className = "fa-solid fa-chevron-down";
     closeHeaderBtn.appendChild(closeIcon);
 
-    header.append(headerLeft, closeHeaderBtn);
+    headerActions.append(clearChatBtn, closeHeaderBtn);
+    header.append(headerLeft, headerActions);
 
     const body = document.createElement("div");
     body.className = "ncw-body";
@@ -78,6 +89,7 @@ window.ChatbotUI = {
       chatWindow,
       closeHeaderBtn,
       body,
+      clearChatBtn,
     };
   },
 

@@ -99,6 +99,33 @@
 }
 
 /* ===========================
+   Header Actions
+=========================== */
+.ncw-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.ncw-header-clear,
+.ncw-header-close {
+  background: transparent;
+  border: none;
+  color: var(--ncw-text-muted);
+  cursor: pointer;
+  font-size: 14px;
+  padding: 4px;
+  transition: color 0.2s ease, transform 0.15s ease;
+  outline: none;
+}
+.ncw-header-clear:hover {
+  color: #f87171; /* Coral Red warning glow */
+  transform: scale(1.1);
+}
+.ncw-header-close:hover {
+  color: var(--ncw-text);
+}
+
+/* ===========================
    Header Styling
 =========================== */
 
