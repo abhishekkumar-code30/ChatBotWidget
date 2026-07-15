@@ -55,7 +55,6 @@ window.ChatbotTree = {
   dept_tech: {
     text: "Technical Support handles bugs, integrations, and setup issues.\n\n📧 support@company.com",
     options: [
-      { label: "📧 support@company.com", next: "mailto:support@company.com", link: true },
       { label: "⬅️ Back to Departments", next: "departments" },
       { label: "🏠 Main Menu",           next: "restart" }
     ]
@@ -63,7 +62,6 @@ window.ChatbotTree = {
   dept_sales: {
     text: "Sales handles pricing, plans, and custom quotes.\n\n📧 sales@company.com",
     options: [
-      { label: "📧 sales@company.com", next: "mailto:sales@company.com", link: true },
       { label: "⬅️ Back to Departments", next: "departments" },
       { label: "🏠 Main Menu",           next: "restart" }
     ]
@@ -71,7 +69,6 @@ window.ChatbotTree = {
   dept_hr: {
     text: "HR handles hiring, internships, and general people questions.\n\n📧 hr@company.com",
     options: [
-      { label: "📧 hr@company.com", next: "mailto:hr@company.com", link: true },
       { label: "⬅️ Back to Departments", next: "departments" },
       { label: "🏠 Main Menu",           next: "restart" }
     ]
