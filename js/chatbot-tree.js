@@ -53,7 +53,7 @@ window.ChatbotTree = {
     ]
   },
   dept_tech: {
-    text: "Technical Support handles bugs, integrations, and setup issues.",
+    text: "Technical Support handles bugs, integrations, and setup issues.\n\n📧 support@company.com",
     options: [
       { label: "📧 support@company.com", next: "mailto:support@company.com", link: true },
       { label: "⬅️ Back to Departments", next: "departments" },
@@ -61,7 +61,7 @@ window.ChatbotTree = {
     ]
   },
   dept_sales: {
-    text: "Sales handles pricing, plans, and custom quotes.",
+    text: "Sales handles pricing, plans, and custom quotes.\n\n📧 sales@company.com",
     options: [
       { label: "📧 sales@company.com", next: "mailto:sales@company.com", link: true },
       { label: "⬅️ Back to Departments", next: "departments" },
@@ -69,7 +69,7 @@ window.ChatbotTree = {
     ]
   },
   dept_hr: {
-    text: "HR handles hiring, internships, and general people questions.",
+    text: "HR handles hiring, internships, and general people questions.\n\n📧 hr@company.com",
     options: [
       { label: "📧 hr@company.com", next: "mailto:hr@company.com", link: true },
       { label: "⬅️ Back to Departments", next: "departments" },
@@ -120,17 +120,15 @@ window.ChatbotTree = {
     ]
   },
   contact_email: {
-    text: "We usually reply within 24 hours.",
+    text: "We usually reply within 24 hours.\n\n📧 hello@company.com",
     options: [
-      { label: "📧 hello@company.com", next: "mailto:hello@company.com", link: true },
       { label: "⬅️ Back to Contact",   next: "contact" },
       { label: "🏠 Main Menu",         next: "restart" }
     ]
   },
   contact_phone: {
-    text: "Mon–Fri, 10am–6pm IST.",
+    text: "Mon–Fri, 10am–6pm IST.\n\n☎️ +91-1234567890",
     options: [
-      { label: "☎️ +91-1234567890", next: "tel:+911234567890", link: true },
       { label: "⬅️ Back to Contact", next: "contact" },
       { label: "🏠 Main Menu",       next: "restart" }
     ]
